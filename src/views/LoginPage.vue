@@ -26,6 +26,8 @@ const password_input = ref('')
 
 function login() {
   console.log(email_input.value, password_input.value);
+//logic for submitting request to database here
+
 }
 </script>
 
