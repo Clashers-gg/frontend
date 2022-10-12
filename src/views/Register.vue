@@ -35,12 +35,11 @@
 
   <div style="margin: 20px 0" />
 
-  <el-button type="register" @click="register">Register</el-button>
+  <el-button @click="register">Register</el-button>
 
 </template>
 
 <script setup lang="ts">
-
   import {ref} from 'vue'
 
   const email = ref('')
