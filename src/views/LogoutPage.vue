@@ -11,5 +11,4 @@
 </template>
 
 <script setup lang="ts">
-const button = {text:'Login'}
 </script>
