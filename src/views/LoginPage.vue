@@ -15,7 +15,7 @@
     show-password
   />
 
-  <el-button type="login" @click="login">Login</el-button>
+  <el-button @click="login">Login</el-button>
 
 </template>
 
