@@ -3,28 +3,6 @@
     <h1>Create Your Account</h1>
   </div>
 
-  <el-input
-      v-model="email"
-      placeholder="Email"
-      clearable
-  />
-
-  <div style="margin: 20px 0" />
-
-  <el-input
-      v-model="first_name"
-      placeholder="First Name"
-      clearable
-  />
-
-  <div style="margin: 20px 0" />
-
-  <el-input
-      v-model="last_name"
-      placeholder="Last Name"
-      clearable
-  />
-
   <div style="margin: 20px 0" />
 
   <el-input
@@ -35,20 +13,93 @@
 
   <div style="margin: 20px 0" />
 
+  <el-input
+      v-model="repeatPassword"
+      placeholder="Password"
+      show-password
+  />
+
+  <div style="margin: 20px 0" />
+
+  <el-input
+      v-model="riot_id"
+      placeholder="Riot ID"
+  />
+
+  <div style="margin: 20px 0" />
+
+  <el-input
+      v-model="username"
+      placeholder="Username"
+  />
+
+  <div style="margin: 20px 0" />
+
   <el-button @click="register">Register</el-button>
 
 </template>
 
 <script setup lang="ts">
   import {ref} from 'vue'
+  import Cookies from 'js-cookie' 
 
-  const email = ref('')
-  const first_name = ref('')
-  const last_name = ref('')
   const password = ref('')
+  const repeatPassword = ref('')
+  const riot_id = ref('')
+  const username = ref('')
 
-  function register() {
-    console.log(email.value, first_name.value, last_name.value, password.value);
-  //logic for submitting request to database here
+  /*
+  username	"a"
+  password1	"adsfasdfadsf"
+  password2	"simulateAPIClick"
+  riot_id	"abc"
+  */
+
+  async function register() {
+
+    //setting the key:value pair
+    let data = new FormData();
+    data.append('password1', password.value);
+    data.append('password2', repeatPassword.value);
+    data.append('riot_id', riot_id.value);
+    data.append('username', username.value);
+
+    console.log(data);
+
+    const getRequest = await fetch('http://localhost:8000/signup/', {
+      method: 'GET',
+      credentials: 'include',
+    } );
+
+    // const csrfToken = getRequest.headers.
+
+    //logic for submitting request to database here
+    fetch('http://localhost:8000/signup/', {
+
+      method: 'POST', // or 'PUT'
+
+      credentials: 'include', 
+
+      mode: 'cors',
+
+      body: data,
+
+      headers: {
+        'X-CSRFToken': Cookies.get('csrftoken')
+      },
+
+    })
+
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('Success:', data);
+      })
+
+      .catch((error) => {
+        console.error('Error:', error);
+
+      }
+    );
   }
+
 </script>

@@ -4,12 +4,12 @@
   </div>
 
   <el-input 
-    v-model="email_input" 
-    placeholder="Your Email"
+    v-model="username" 
+    placeholder="Your Username"
   />
 
   <el-input 
-    v-model="password_input"
+    v-model="password"
     type="password"
     placeholder="Your Password"
     show-password
@@ -19,16 +19,64 @@
 
 </template>
 
+
+
+
 <script setup lang="ts">
-import {ref} from 'vue'
-const email_input = ref('')
-const password_input = ref('')
 
-function login() {
-  console.log(email_input.value, password_input.value);
-//logic for submitting request to database here
+  import {ref} from 'vue'
+  import Cookies from 'js-cookie' 
+  import { useRouter } from 'vue-router';
 
-}
+  const router = useRouter();
+
+  const username = ref('')
+  const password = ref('')
+
+
+  //logic for submitting request to database here
+  async function login() {
+
+    //setting the key:value pair
+    let data = new FormData();
+    data.append('username', username.value);
+    data.append('password', password.value);
+
+    console.log(data);
+
+    const getRequest = await fetch('http://localhost:8000/accounts/login/', {
+      method: 'GET',
+      credentials: 'include',
+    } );
+
+    //logic for submitting request to database here
+    fetch('http://localhost:8000/accounts/login/', {
+
+      method: 'POST', // or 'PUT'
+
+      credentials: 'include', 
+
+      mode: 'cors',
+
+      body: data,
+
+      headers: {
+        'X-CSRFToken': Cookies.get('csrftoken')
+      },
+
+    })
+
+      .then((data) => {
+        router.push('Dashboard')
+      })
+
+      .catch((error) => {
+        console.error('Error:', error);
+
+      }
+    );
+  }
+
 </script>
 
 <style scoped>
