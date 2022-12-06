@@ -37,11 +37,19 @@
 
   <el-button @click="register">Register</el-button>
 
+  <footer>
+        <router-link to="/about" tag="button"><el-button>Contact Us</el-button></router-link>
+    </footer>
+
 </template>
 
 <script setup lang="ts">
+
   import {ref} from 'vue'
   import Cookies from 'js-cookie' 
+  import { useRouter } from 'vue-router';
+
+  const router = useRouter();
 
   const password = ref('')
   const repeatPassword = ref('')
@@ -90,9 +98,10 @@
 
     })
 
-      .then((response) => response.json())
-      .then((data) => {
-        console.log('Success:', data);
+      .then((response) => {
+        if (response.status === 302) {
+          router.push('/login')
+        }
       })
 
       .catch((error) => {
