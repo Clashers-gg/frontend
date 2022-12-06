@@ -6,7 +6,6 @@
     <router-link to="/friends" tag="button"><el-button>Friends</el-button></router-link>
     <router-link to="/clash" tag="button"><el-button>Clash</el-button></router-link>
     <router-link to="/rankedduo" tag="button"><el-button>Ranked Duo</el-button></router-link>
-    <router-link to="/messages" tag="button"><el-button>Messages</el-button></router-link>
     <router-link to="/friendfinder" tag="button"><el-button>Friend Finder</el-button></router-link>
 
     <div style="margin: 20px 0" />
