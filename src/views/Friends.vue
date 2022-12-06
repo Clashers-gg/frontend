@@ -6,7 +6,6 @@
     <router-link to="/dashboard" tag="button"><el-button>Profile</el-button></router-link>
     <router-link to="/clash" tag="button"><el-button>Clash</el-button></router-link>
     <router-link to="/rankedduo" tag="button"><el-button>Ranked Duo</el-button></router-link>
-    <router-link to="/messages" tag="button"><el-button>Messages</el-button></router-link>
     <router-link to="/friendfinder" tag="button"><el-button>Friend Finder</el-button></router-link>
 
     <p id="friends">
@@ -18,7 +17,7 @@
         <p>Summoner Level: {{player.summonerLevel}} </p> -->
         <!-- <div>{{ friendship }}</div> -->
         <router-link :to="`/player/${friendship}`" tag="p"><p> {{ friendship }} </p></router-link>
-        <el-button @click="message(friendship)">Message</el-button>
+        <router-link :to="`/message/${friendship}`"><el-button>Message</el-button></router-link>
     </el-row>
     
     <p v-if="pendingFriendNames.length > 0" id="pending">
@@ -151,33 +150,6 @@
         .then(() => {
             // move accepted friend to accepted friends and remove from pending friends in javascript
             pendingFriendNames.value = pendingFriendNames.value.filter((pendingFriend) => pendingFriend !== friend)
-        })
-    }
-
-    function message(friend: string) {
-        let data = new FormData();
-        // data.append('friend', friend)
-
-        fetch('http://localhost:8000/send_message/', {
-
-            method: 'POST',
-
-            credentials: 'include', 
-
-            mode: 'cors',
-
-            headers: {
-                'X-CSRFToken': Cookies.get('csrftoken')
-            },
-
-            body: data,
-
-        })
-        .then((response) => response.json())
-        .then((data) => {
-            // move accepted friend to accepted friends and remove from pending friends in javascript
-            pendingFriendNames.value = pendingFriendNames.value.filter((pendingFriend) => pendingFriend !== friend)
-            friendships.value.push(friend)
         })
     }
 
