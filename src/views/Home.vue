@@ -7,10 +7,6 @@
   <router-link to="/register" tag="button"><el-button>Register</el-button></router-link>
   <!-- <el-button :icon="Search">Search</el-button> -->
 
-  <footer>
-        <router-link to="/about" tag="button"><el-button>Contact Us</el-button></router-link>
-    </footer>
-
 </template>
 
 <script setup lang="ts">

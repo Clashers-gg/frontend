@@ -37,9 +37,6 @@
 
   <el-button @click="register">Register</el-button>
 
-  <footer>
-        <router-link to="/about" tag="button"><el-button>Contact Us</el-button></router-link>
-    </footer>
 
 </template>
 

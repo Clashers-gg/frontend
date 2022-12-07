@@ -2,11 +2,6 @@
     <div>
         <h1>Welcome to Your Clash, {{player.name}}!</h1>
     </div>
-    
-    <router-link to="/dashboard" tag="button"><el-button>Profile</el-button></router-link>
-    <router-link to="/clash" tag="button"><el-button>Clash</el-button></router-link>
-    <router-link to="/rankedduo" tag="button"><el-button>Ranked Duo</el-button></router-link>
-    <router-link to="/friendfinder" tag="button"><el-button>Friend Finder</el-button></router-link>
 
     <p id="friends">
         <h3>Friends</h3>
@@ -28,10 +23,6 @@
             <el-button @click="deny(friend)">Deny</el-button>
         </el-row>
     </p>
-
-    <footer>
-        <router-link to="/about" tag="button"><el-button>Contact Us</el-button></router-link>
-    </footer>
 
 </template>
 

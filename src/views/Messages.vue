@@ -2,12 +2,6 @@
     <div>
         <h1>Welcome to Your Clash, !</h1>
     </div>
-    
-    <router-link to="/friends" tag="button"><el-button>Friends</el-button></router-link>
-    <router-link to="/dashboard" tag="button"><el-button>Profile</el-button></router-link>
-    <router-link to="/clash" tag="button"><el-button>Clash</el-button></router-link>
-    <router-link to="/rankedduo" tag="button"><el-button>Ranked Duo</el-button></router-link>
-    <router-link to="/friendfinder" tag="button"><el-button>Friend Finder</el-button></router-link>
 
     <p id="messages">
         <h3>Your Messages With {{ friend }}</h3>
@@ -36,10 +30,6 @@
         placeholder="Write a message to your friend"
     />
     <el-button @click="send">Send!</el-button>
-
-    <footer>
-        <router-link to="/about" tag="button"><el-button>Contact Us</el-button></router-link>
-    </footer>
 
 </template>
 
