@@ -12,7 +12,7 @@
             <div class="card-header">
                 <el-row>
                     <el-col>
-                        <span>{{ message.friend1__riot_id === friend ? `${friend}` : 'me' }}</span>
+                        <span>{{ message.friend1__riot_id === friend ? `${friend}:` : 'You:' }}</span>
                     </el-col>
                     <el-col>
                         <span>{{ message.send_time }}</span>

@@ -3,7 +3,7 @@
         <h3>Friends</h3>
     </p>
     <el-row v-for="friend of friends">
-        <router-link :to="`/player/${friend}`" tag="p"><p> {{ friend }} </p></router-link>
+        <router-link :to="`/player/${friend}`" tag="p"><el-button text> {{ friend }} </el-button></router-link>
         <router-link :to="`/message/${friend}`"><el-button>Message</el-button></router-link>
     </el-row>
     
@@ -23,9 +23,8 @@
     import {ref} from 'vue'
     import Cookies from 'js-cookie' 
 
-    const player = ref({})
     const pendingFriendNames = ref<string[]>([]);
-    const friends = ref<any[]>([]);
+    const friends = ref<string[]>([]);
 
     function display_friends() {
         fetch('http://localhost:8000/display_friends', {

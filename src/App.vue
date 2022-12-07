@@ -1,13 +1,12 @@
 <template>
-
   <el-container>
-    <el-header>
+    <el-header :style="{ boxShadow: 'var(--el-box-shadow)' }">
       <el-row>
-        <el-col :span="12">
-          <router-link to="/" tag="button"><h1>Clashers</h1></router-link>
+        <el-col :sm="12" :xs="6">
+          <router-link to="/" tag="button" id="title"><h1>Clashers</h1></router-link>
         </el-col>
 
-        <el-col v-if="userLoggedIn" :span="12">
+        <el-col v-if="userLoggedIn" :sm="12" :xs="12" :style="{ minWidth: '350px'}">
           <router-link to="/dashboard" tag="button"><el-button text>Profile</el-button></router-link>
           <router-link to="/friends" tag="button"><el-button text>Friends</el-button></router-link>
           <!-- <router-link to="/clash" tag="button"><el-button text>Clash</el-button></router-link>
@@ -16,7 +15,7 @@
           <router-link to="/logout" tag="button"><el-button text>Logout</el-button></router-link>
         </el-col>
 
-        <el-col v-else :span="12">
+        <el-col v-else :sm="12" :xs="12">
           <router-link to="/register" tag="button"><el-button text>Register</el-button></router-link>
           <router-link to="/login" tag="button"><el-button text>Login</el-button></router-link>
         </el-col>
@@ -45,5 +44,21 @@ store.checkUserLoggedIn();
 </script>
 
 <style>
-  
+* {
+  font-family: 'Arial';
+}
+
+body {
+  margin: 0;
+}
+
+#title, #title:visited, #title:hover {
+  font-size: 11pt;
+  text-decoration: none;
+  color: black;
+}
+
+el-header {
+  background-color: aqua;
+}
 </style>
