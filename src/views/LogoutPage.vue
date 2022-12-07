@@ -11,4 +11,24 @@
 </template>
 
 <script setup lang="ts">
+import Cookies from 'js-cookie';
+import { useUser } from '../stores/user';
+
+const store = useUser();
+
+async function logout() {
+  const csrf = Cookies.get('csrftoken') || '';
+  await fetch('http://localhost:8000/accounts/logout/', {
+    method: 'GET',
+    credentials: 'include', 
+    mode: 'cors',
+    headers: {
+      'X-CSRFToken': csrf
+    },
+  })
+
+  store.checkUserLoggedIn();
+}
+
+logout();
 </script>

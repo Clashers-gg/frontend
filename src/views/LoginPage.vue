@@ -17,10 +17,6 @@
 
   <el-button @click="login">Login</el-button>
 
-  <footer>
-      <router-link to="/about" tag="button"><el-button>Contact Us</el-button></router-link>
-  </footer>
-
 </template>
 
 
@@ -31,8 +27,10 @@
   import {ref} from 'vue'
   import Cookies from 'js-cookie' 
   import { useRouter } from 'vue-router';
+  import { useUser } from '../stores/user';
 
   const router = useRouter();
+  const store = useUser();
 
   const username = ref('')
   const password = ref('')
@@ -72,6 +70,7 @@
 
       .then((data) => {
         router.push('Dashboard')
+        store.checkUserLoggedIn()
       })
 
       .catch((error) => {
