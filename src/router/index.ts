@@ -11,7 +11,6 @@ import About from '@/views/About.vue'
 import Player from '@/views/Player.vue'
 import Friends from '@/views/Friends.vue'
 import Messages from '@/views/Messages.vue'
-import Profile from '@/views/Profile.vue'
 
 // Each route maps to a component.
 const routes = [
@@ -54,11 +53,6 @@ const routes = [
         path: '/about',
         name: "About",
         component: () => import('../views/About.vue')
-    },
-    {
-        path: '/profile',
-        name: "Profile",
-        component: () => import('../views/Profile.vue')
     },
     {
         path: '/friends',
